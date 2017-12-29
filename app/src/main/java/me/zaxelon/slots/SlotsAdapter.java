@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,7 @@ public class SlotsAdapter {
     private Integer scrollTime = 3000;
     private Integer childIncTime = 500;
     private Callback callback;
+    private List<LinearLayoutManager> layoutManagers;
 
     public SlotsAdapter() {
 
@@ -44,10 +44,12 @@ public class SlotsAdapter {
             SpeedManager.setScrollTime(timePerInch);
             RecyclerView.LayoutManager mLayoutManager = new SpeedManager(activity);
             slotView.setLayoutManager(mLayoutManager);
+            layoutManagers.add((LinearLayoutManager) mLayoutManager);
             SlotAdapter mAdapter = new SlotAdapter(drawables);
             slotView.setAdapter(mAdapter);
             timePerInch += dockingTimePerInch;
         }
+        callback.setLayoutManagers(layoutManagers);
         slotsView.get(slotsView.size()-1).addOnScrollListener(new ScrollListener(callback));
         drawables.clear();
     }
@@ -87,6 +89,7 @@ public class SlotsAdapter {
             SlotsAdapter.this.activity = activity;
             SlotsAdapter.this.slotsView = new ArrayList<>();
             SlotsAdapter.this.drawables = new ArrayList<>();
+            SlotsAdapter.this.layoutManagers = new ArrayList<>();
             SlotsAdapter.this.isWork = false;
         }
 

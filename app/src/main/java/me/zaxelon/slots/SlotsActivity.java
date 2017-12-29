@@ -13,7 +13,8 @@ public class SlotsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slots);
-        final SlotsAdapter slots = SlotsAdapter.builder(this)
+        final SlotsAdapter.Builder builder = SlotsAdapter.builder(this);
+        final SlotsAdapter slots = builder
                 .addSlots(R.id.slot_one, R.id.slot_two, R.id.slot_three, R.id.slot_four, R.id.slot_five)
                 .addDrawables(R.drawable.i, R.drawable.ross_rodriguez, R.drawable.tina_caldwell, R.drawable.wallace_sutton)
                 .setScrollTimePerInch(1f)
@@ -23,11 +24,10 @@ public class SlotsActivity extends AppCompatActivity {
                 .setOnFinishListener(new Callback() {
                     @Override
                     public void OnFinishListener() {
-                        Toast.makeText(SlotsActivity.this, "Обработай меня плз!?", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SlotsActivity.this, "Обработай меня плз!?\nnumb last vis pos :" +getLayoutManagers().get(1).findLastVisibleItemPosition() , Toast.LENGTH_SHORT).show();
                     }
                 })
                 .build();
-        //slots.start();
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
