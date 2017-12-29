@@ -39,7 +39,7 @@ public class SpeedManager extends LinearLayoutManager {
 
             @Override
             protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
-                return scrollTime / displayMetrics.densityDpi;
+                return scrollTime;
             }
         };
 
