@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlotsAdapter {
+public class SlotsBuilder {
     private Activity activity;
     private List<SlotView> slotsView;
     private List<Drawable> drawables;
@@ -22,18 +22,18 @@ public class SlotsAdapter {
     private Callback callback;
     private List<LinearLayoutManager> layoutManagers;
 
-    public SlotsAdapter() {
+    private SlotsBuilder() {
 
     }
 
     private void addSlots(Integer... slotsViewId) {
-        for (Integer slotId: slotsViewId) {
+        for (Integer slotId : slotsViewId) {
             slotsView.add((SlotView) activity.findViewById(slotId));
         }
     }
 
     private void addDrawables(Integer... drawablesId) {
-        for (Integer drawableId: drawablesId) {
+        for (Integer drawableId : drawablesId) {
             drawables.add(activity.getResources().getDrawable(drawableId));
         }
     }
@@ -50,7 +50,7 @@ public class SlotsAdapter {
             timePerInch += dockingTimePerInch;
         }
         callback.setLayoutManagers(layoutManagers);
-        slotsView.get(slotsView.size()-1).addOnScrollListener(new ScrollListener(callback));
+        slotsView.get(slotsView.size() - 1).addOnScrollListener(new ScrollListener(callback));
         drawables.clear();
     }
 
@@ -61,7 +61,7 @@ public class SlotsAdapter {
             for (final SlotView slotView : slotsView) {
                 tempTime += childIncTime;
                 LinearLayoutManager layoutManager = ((LinearLayoutManager) slotView.getLayoutManager());
-                slotView.smoothScrollToPosition(layoutManager.findLastVisibleItemPosition()+100);
+                slotView.smoothScrollToPosition(layoutManager.findLastVisibleItemPosition() + 100);
                 Handler handler = new Handler();
                 Runnable runnable = new Runnable() {
                     public void run() {
@@ -81,56 +81,56 @@ public class SlotsAdapter {
     }
 
     public static Builder builder(Activity activity) {
-        return new SlotsAdapter().new Builder(activity);
+        return new SlotsBuilder().new Builder(activity);
     }
 
     public class Builder {
         private Builder(Activity activity) {
-            SlotsAdapter.this.activity = activity;
-            SlotsAdapter.this.slotsView = new ArrayList<>();
-            SlotsAdapter.this.drawables = new ArrayList<>();
-            SlotsAdapter.this.layoutManagers = new ArrayList<>();
-            SlotsAdapter.this.isWork = false;
+            SlotsBuilder.this.activity = activity;
+            SlotsBuilder.this.slotsView = new ArrayList<>();
+            SlotsBuilder.this.drawables = new ArrayList<>();
+            SlotsBuilder.this.layoutManagers = new ArrayList<>();
+            SlotsBuilder.this.isWork = false;
         }
 
         public Builder addSlots(Integer... slotsViewId) {
-            SlotsAdapter.this.addSlots(slotsViewId);
+            SlotsBuilder.this.addSlots(slotsViewId);
             return this;
         }
 
         public Builder addDrawables(Integer... drawablesId) {
-            SlotsAdapter.this.addDrawables(drawablesId);
+            SlotsBuilder.this.addDrawables(drawablesId);
             return this;
         }
 
         public Builder setScrollTimePerInch(Float scrollTimePerInch) {
-            SlotsAdapter.this.scrollTimePerInch = scrollTimePerInch;
+            SlotsBuilder.this.scrollTimePerInch = scrollTimePerInch;
             return this;
         }
 
         public Builder setDockingTimePerInch(Float dockingTimePerInch) {
-            SlotsAdapter.this.dockingTimePerInch = dockingTimePerInch;
+            SlotsBuilder.this.dockingTimePerInch = dockingTimePerInch;
             return this;
         }
 
         public Builder setScrollTime(Integer scrollTime) {
-            SlotsAdapter.this.scrollTime = scrollTime;
+            SlotsBuilder.this.scrollTime = scrollTime;
             return this;
         }
 
         public Builder setChildIncTime(Integer childIncTime) {
-            SlotsAdapter.this.childIncTime = childIncTime;
+            SlotsBuilder.this.childIncTime = childIncTime;
             return this;
         }
 
         public Builder setOnFinishListener(Callback callback) {
-            SlotsAdapter.this.callback = callback;
+            SlotsBuilder.this.callback = callback;
             return this;
         }
 
-        public SlotsAdapter build() {
-            SlotsAdapter.this.build();
-            return SlotsAdapter.this;
+        public SlotsBuilder build() {
+            SlotsBuilder.this.build();
+            return SlotsBuilder.this;
         }
 
     }

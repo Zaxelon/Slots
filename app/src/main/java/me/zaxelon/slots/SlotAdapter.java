@@ -16,6 +16,7 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView mTextView;
+
         public ViewHolder(View v) {
             super(v);
             mTextView = v.findViewById(R.id.image_view);

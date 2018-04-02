@@ -15,6 +15,7 @@ public class SpeedManager extends LinearLayoutManager {
     SpeedManager(Context context) {
         super(context);
     }
+
     public static void setScrollTime(Float scrollTime) {
         SpeedManager.scrollTime = scrollTime;
     }
