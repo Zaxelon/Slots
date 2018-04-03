@@ -7,7 +7,7 @@ This Android Project helps you to make your slots.
 <me.zaxelon.slots.SlotsView
     android:id="@+id/linear_slots"
     android:layout_width="wrap_content"
-    android:layout_height="285dp"
+    android:layout_height="255dp"
     android:orientation="horizontal">
 
     <me.zaxelon.slots.SlotView
