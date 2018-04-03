@@ -3,6 +3,7 @@ This Android Project helps you to make your slots.
 ## Usage
 
 Clone this project:
+
 $git clone https://github.com/Zaxelon/Slots.git
 
 ### The slots needs to be configured in the XML:
