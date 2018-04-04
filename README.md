@@ -1,12 +1,13 @@
 # Slots
 This Android Project helps you to make your slots.
-## Usage
 
-Clone this project:
+## Library usage
+
+To use this library you have to clone it:
 
 $git clone https://github.com/Zaxelon/Slots.git
 
-### The slots needs to be configured in the XML:
+### XML:
 ```xml
 <me.zaxelon.slots.SlotsView
     android:id="@+id/linear_slots"
@@ -46,7 +47,7 @@ $git clone https://github.com/Zaxelon/Slots.git
 </me.zaxelon.slots.SlotsView>
 ```
     
-### Add into item_list.xml:
+### item_list.xml:
 ```xml
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/image_view"
@@ -54,7 +55,7 @@ $git clone https://github.com/Zaxelon/Slots.git
     android:layout_height="85dp"
     android:padding="5dp" />
 ```
-## And Java code:
+## Java code:
 ```java
 final SlotsAdapter slots = SlotsAdapter.builder(this)
     .addSlots(R.id.slot_one, R.id.slot_two, R.id.slot_three, R.id.slot_four, R.id.slot_five)
