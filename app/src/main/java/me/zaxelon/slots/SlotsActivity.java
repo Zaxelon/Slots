@@ -2,7 +2,6 @@ package me.zaxelon.slots;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import java.security.SecureRandom;
@@ -25,11 +24,11 @@ public class SlotsActivity extends AppCompatActivity {
                     @Override
                     public void OnFinishListener() {
                         Toast.makeText(SlotsActivity.this,
-                                "Обработай меня плз!?\nnumb last vis pos :"
+                                "Меня нужно обработать\nnumb last vis pos: "
                                         + getLayoutManagers().get(1).findLastVisibleItemPosition(),
                                 Toast.LENGTH_SHORT).show();
 
-//                        TODO base example for check wining
+//                        TODO: example code snippet. To check the victory you can use a "for" loop
 //                        List<LinearLayoutManager> layoutManagers = getLayoutManagers();
 //                        List<Drawable> drawables = new ArrayList<>();
 //
@@ -40,7 +39,6 @@ public class SlotsActivity extends AppCompatActivity {
 //                                    .getCurrent());
 //                        }
 //
-//                        TODO use "for()" pls
 //                        if ((drawables.get(0) == drawables.get(1)) &&
 //                                (drawables.get(1) == drawables.get(2))) {
 //                            //...
@@ -49,11 +47,6 @@ public class SlotsActivity extends AppCompatActivity {
                 })
                 .build();
 
-        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                slots.start();
-            }
-        });
+        findViewById(R.id.btn).setOnClickListener(v -> slots.start());
     }
 }

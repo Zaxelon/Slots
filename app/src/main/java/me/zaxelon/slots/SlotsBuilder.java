@@ -28,7 +28,7 @@ public class SlotsBuilder {
 
     private void addSlots(Integer... slotsViewId) {
         for (Integer slotId : slotsViewId) {
-            slotsView.add((SlotView) activity.findViewById(slotId));
+            slotsView.add(activity.findViewById(slotId));
         }
     }
 
@@ -63,13 +63,11 @@ public class SlotsBuilder {
                 LinearLayoutManager layoutManager = ((LinearLayoutManager) slotView.getLayoutManager());
                 slotView.smoothScrollToPosition(layoutManager.findLastVisibleItemPosition() + 100);
                 Handler handler = new Handler();
-                Runnable runnable = new Runnable() {
-                    public void run() {
-                        LinearLayoutManager layoutManager = ((LinearLayoutManager) slotView.getLayoutManager());
-                        final int vs = layoutManager.findLastVisibleItemPosition() + 5;
-                        slotView.smoothScrollToPosition(vs);
-                        isWork = false;
-                    }
+                Runnable runnable = () -> {
+                    LinearLayoutManager layoutManager1 = ((LinearLayoutManager) slotView.getLayoutManager());
+                    final int vs = layoutManager1.findLastVisibleItemPosition() + 5;
+                    slotView.smoothScrollToPosition(vs);
+                    isWork = false;
                 };
                 handler.postDelayed(runnable, tempTime);
             }
