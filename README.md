@@ -67,7 +67,7 @@ final SlotsAdapter slots = SlotsAdapter.builder(this)
     .setOnFinishListener(new Callback() {
         @Override
         public void OnFinishListener() {
-            Toast.makeText(SlotsActivity.this, "Обработай меня плз!?\nnumb last vis pos :" + getLayoutManagers().get(1).findLastVisibleItemPosition() , Toast.LENGTH_SHORT).show();
+            Toast.makeText(SlotsActivity.this, "Меня нужно обработать\nnumb last vis pos: " + getLayoutManagers().get(1).findLastVisibleItemPosition() , Toast.LENGTH_SHORT).show();
         }
     })
     .build();
