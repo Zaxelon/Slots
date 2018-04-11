@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="slots_view_height">255dp</dimen>
+    <dimen name="slots_iv_item_size">85dp</dimen>
+</resources>
