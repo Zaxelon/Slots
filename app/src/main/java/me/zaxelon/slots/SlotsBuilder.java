@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SlotsBuilder {
     private Activity activity;
-    private List<SlotView> slotsView;
+    private List<SlotView> slotViews;
     private List<Drawable> drawables;
     private Boolean isWork;
     private Float scrollTimePerInch = 2f;
@@ -23,12 +23,11 @@ public class SlotsBuilder {
     private List<LinearLayoutManager> layoutManagers;
 
     private SlotsBuilder() {
-
     }
 
     private void addSlots(Integer... slotsViewId) {
         for (Integer slotId : slotsViewId) {
-            slotsView.add(activity.findViewById(slotId));
+            slotViews.add(activity.findViewById(slotId));
         }
     }
 
@@ -40,7 +39,7 @@ public class SlotsBuilder {
 
     private void build() {
         Float timePerInch = scrollTimePerInch;
-        for (SlotView slotView : slotsView) {
+        for (SlotView slotView : slotViews) {
             SpeedManager.setScrollTime(timePerInch);
             RecyclerView.LayoutManager mLayoutManager = new SpeedManager(activity);
             slotView.setLayoutManager(mLayoutManager);
@@ -50,7 +49,7 @@ public class SlotsBuilder {
             timePerInch += dockingTimePerInch;
         }
         callback.setLayoutManagers(layoutManagers);
-        slotsView.get(slotsView.size() - 1).addOnScrollListener(new ScrollListener(callback));
+        slotViews.get(slotViews.size() - 1).addOnScrollListener(new ScrollListener(callback));
         drawables.clear();
     }
 
@@ -58,7 +57,7 @@ public class SlotsBuilder {
         if (!isWork) {
             isWork = true;
             Integer tempTime = this.scrollTime;
-            for (final SlotView slotView : slotsView) {
+            for (final SlotView slotView : slotViews) {
                 tempTime += childIncTime;
                 LinearLayoutManager layoutManager = ((LinearLayoutManager) slotView.getLayoutManager());
                 slotView.smoothScrollToPosition(layoutManager.findLastVisibleItemPosition() + 100);
@@ -73,7 +72,7 @@ public class SlotsBuilder {
             }
             return true;
         } else {
-            Log.e("Slots", "Slots already run");
+            Log.e("Slots", "Slots are already run");
             return false;
         }
     }
@@ -85,7 +84,7 @@ public class SlotsBuilder {
     public class Builder {
         private Builder(Activity activity) {
             SlotsBuilder.this.activity = activity;
-            SlotsBuilder.this.slotsView = new ArrayList<>();
+            SlotsBuilder.this.slotViews = new ArrayList<>();
             SlotsBuilder.this.drawables = new ArrayList<>();
             SlotsBuilder.this.layoutManagers = new ArrayList<>();
             SlotsBuilder.this.isWork = false;

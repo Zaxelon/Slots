@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Slots</string>
+    <string name="slots_btn_play">Играть</string>
 </resources>
