@@ -3,4 +3,5 @@
     android:id="@+id/image_view"
     android:layout_width="@dimen/slots_iv_item_size"
     android:layout_height="@dimen/slots_iv_item_size"
+    android:rotation="180"
     android:padding="5dp" />

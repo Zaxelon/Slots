@@ -42,12 +42,15 @@ public class SlotsBuilder {
         for (SlotView slotView : slotViews) {
             SpeedManager.setScrollTime(timePerInch);
             RecyclerView.LayoutManager mLayoutManager = new SpeedManager(activity);
+
             slotView.setLayoutManager(mLayoutManager);
             layoutManagers.add((LinearLayoutManager) mLayoutManager);
+
             SlotAdapter mAdapter = new SlotAdapter(drawables);
             slotView.setAdapter(mAdapter);
             timePerInch += dockingTimePerInch;
         }
+
         callback.setLayoutManagers(layoutManagers);
         slotViews.get(slotViews.size() - 1).addOnScrollListener(new ScrollListener(callback));
         drawables.clear();

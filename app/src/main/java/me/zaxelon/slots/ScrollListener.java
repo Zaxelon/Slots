@@ -14,10 +14,8 @@ public class ScrollListener extends RecyclerView.OnScrollListener {
             case RecyclerView.SCROLL_STATE_IDLE:
                 callback.OnFinishListener();
         }
-
     }
 
     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-
     }
 }

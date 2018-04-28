@@ -29,12 +29,10 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.ViewHolder> {
     }
 
     @Override
-    public SlotAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public SlotAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_list, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return new ViewHolder(v);
     }
 
     @Override

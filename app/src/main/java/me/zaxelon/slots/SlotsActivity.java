@@ -1,7 +1,7 @@
 package me.zaxelon.slots;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.security.SecureRandom;
@@ -20,33 +20,36 @@ public class SlotsActivity extends AppCompatActivity {
                 .setDockingTimePerInch(0f)
                 .setScrollTime(2500 + new SecureRandom().nextInt(1500))
                 .setChildIncTime(1000)
-                .setOnFinishListener(new Callback() {
-                    @Override
-                    public void OnFinishListener() {
-                        Toast.makeText(SlotsActivity.this,
-                                "Меня нужно обработать\nnumb last vis pos: "
-                                        + getLayoutManagers().get(1).findLastVisibleItemPosition(),
-                                Toast.LENGTH_SHORT).show();
-
-//                        TODO: example code snippet. To check the victory you can use a "for" loop
-//                        List<LinearLayoutManager> layoutManagers = getLayoutManagers();
-//                        List<Drawable> drawables = new ArrayList<>();
-//
-//                        for (int i = 0; i < 5; i++) {
-//                            drawables.add(((ImageView) layoutManagers.get(i).findViewByPosition(
-//                                    layoutManagers.get(i).findFirstVisibleItemPosition()+2))
-//                                    .getDrawable()
-//                                    .getCurrent());
-//                        }
-//
-//                        if ((drawables.get(0) == drawables.get(1)) &&
-//                                (drawables.get(1) == drawables.get(2))) {
-//                            //...
-//                        }
-                    }
-                })
+                .setOnFinishListener(new FinishListener())
                 .build();
 
         findViewById(R.id.btn).setOnClickListener(v -> slots.start());
+    }
+
+    private class FinishListener extends Callback {
+        @Override
+        public void OnFinishListener() {
+            Toast.makeText(SlotsActivity.this,
+                    "Меня нужно обработать\nnumb last vis pos: "
+                            + getLayoutManagers().get(1).findLastVisibleItemPosition(),
+                    Toast.LENGTH_SHORT).show();
+
+//            TODO:
+//            example code snippet.To check the victory you can use a "for" loop
+//            List<LinearLayoutManager> layoutManagers = getLayoutManagers();
+//            List<Drawable> drawables = new ArrayList<>();
+//
+//            for (int i = 0; i < 5; i++) {
+//                drawables.add(((ImageView) layoutManagers.get(i).findViewByPosition(
+//                        layoutManagers.get(i).findFirstVisibleItemPosition() + 2))
+//                        .getDrawable()
+//                        .getCurrent());
+//            }
+//
+//            if ((drawables.get(0) == drawables.get(1)) &&
+//                    (drawables.get(1) == drawables.get(2))) {
+//                //...
+//            }
+        }
     }
 }
