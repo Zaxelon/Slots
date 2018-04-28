@@ -72,10 +72,5 @@ final SlotsAdapter slots = SlotsAdapter.builder(this)
     })
     .build();
 
-findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        slots.start();
-    }
-});
+findViewById(R.id.btn).setOnClickListener(v -> slots.start());
 ```
